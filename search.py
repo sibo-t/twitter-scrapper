@@ -39,7 +39,7 @@ def run():
         ActionChains(driver)\
             .send_keys(Keys.ESCAPE)\
                 .perform()
-        time.sleep(randint(3,7))
+        time.sleep(randint(5,10))
 
     f.close()
 
@@ -50,7 +50,7 @@ def retrieve_data(driver):
     output = driver.find_element(By.TAG_NAME, "main")
     
     ActionChains(driver)\
-        .scroll_by_amount(0, 600)\
+        .scroll_by_amount(0, 700)\
         .perform()
 
     return output
