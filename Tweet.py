@@ -6,10 +6,10 @@ Create a tweet object
                     * _AUT  (String)
 
             Methods:
-                    * __eq__() (Boolean) - Compares 2 Tweet objects
-                    * getDate (Datetime) - Returns the date of the tweet
-                    * getMessage(String) - Returns the message of the Tweet
-                    * getAuthor (String) - Returns the author's Twitter handle
+                    * __eq__() (Tweet) - Compares 2 Tweet objects (Boolean)
+                    * getDate() - Returns the date of the tweet (Datetime)
+                    * getMessage() - Returns the message of the Tweet (String)
+                    * getAuthor() - Returns the author's Twitter handle (String)
 """
 import datetime
 
@@ -29,3 +29,6 @@ class Tweet:
 
     def getAuthor(self):
         return self._AUT
+
+    def __eq__(self, other):
+        return (self._AUT == other._AUT ) and (self._MSG == other._MSG ) and (self._DATE == other._DATE )
