@@ -7,34 +7,23 @@ from random import randint
 
 import time
 
-def run():
+def run(n, look_up):
+    """Creates a tweetdump.txt file with tweets relating to the searched topic
+
+    Args:
+        n (int): Try to look for n amount of unique tweets
+        look_up (str): Topic of the tweets
+    """
     driver = webdriver.Chrome()
     driver.get("https://www.twitter.com")
     time.sleep(randint(3,7))
-    driver.find_element(By.TAG_NAME, "input").send_keys("#chelseabun" + Keys.ENTER)
+    driver.find_element(By.TAG_NAME, "input").send_keys("#"+look_up+ Keys.ENTER)
 
-    # output = retrieve_data(driver)
+    f= open("tweetdump.txt","w+")
 
-    # for j in range(10):
-    #     output.extend(retrieve_data(driver))
-    #     ActionChains(driver)\
-    #         .send_keys(Keys.ESCAPE)\
-    #             .perform()
-    #     time.sleep(randint(3,7))
+    for i in range(n):
         
-
-    count = 0
-    f= open("tweetdump2.txt","w+")
-
-    for i in range(10):
-        
-        f.write("*********************"+str(count)+"*************************\n")
-        f.write("\n")
         f.write(retrieve_data(driver).text)
-        f.write("\n")
-        f.write("*******************************************************\n")
-        f.write("\n")
-        count+=1
 
         ActionChains(driver)\
             .send_keys(Keys.ESCAPE)\
@@ -54,7 +43,3 @@ def retrieve_data(driver):
         .perform()
 
     return output
-
-
-if __name__ == "__main__" :
-    run()

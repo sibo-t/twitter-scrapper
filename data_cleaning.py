@@ -5,24 +5,36 @@ A module to clean raw twitter data collected
                                 list of unique Tweet onjects
                                 * 
 """
-import Tweet
 from collections import deque
 from calendar import month_abbr
 import datetime
 
 
-def retrieve_raw_tweets(tweet_dump):
+def retrieve_raw_tweets(tweet_dump, db):
+    """Extracts tweets and stores them in a database
 
-    tweet_deque = deque()
+    Args:
+        tweet_dump (String): Location of the raw data containing texxt file
+        db (_type_): _description_
+    """
+
     look_f_date = True
     look_f_msg = True
     look_f_aut = True
     tweet_date = None
     tweet_msg= ""
     tweet_aut = ""
+    tweet_count = 1
 
     with open(tweet_dump) as file:
         for line in file:
+            if (look_f_aut or look_f_date or look_f_msg) == False:
+                db.insert_tweet(tweet_count,tweet_date, tweet_msg,tweet_aut)
+                tweet_date = None
+                tweet_msg= ""
+                tweet_aut = ""
+                tweet_count+=1
+                continue
             if look_f_date:
                 look_f_date, tweet_date = convert_date(line)
                 continue
