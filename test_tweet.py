@@ -1,5 +1,5 @@
 import unittest
-import Tweet
+import Tweet.Tweet as Tweet
 import datetime
 
 class TestTweet(unittest.TestCase):

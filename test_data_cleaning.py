@@ -1,5 +1,5 @@
 import unittest
-import data_cleaning
+import Cleaning.data_cleaning as data_cleaning
 
 
 class TestDataCleaning(unittest.TestCase):

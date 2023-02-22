@@ -8,9 +8,9 @@ Twitter-scraper
              Data is extracted from Twitter, cleaned (transformed) into understandable date and
              finally loaded into a database
 """
-import database
-from search import run
-from data_cleaning import retrieve_raw_tweets
+import DB.database as database
+from Search.search import run
+from Cleaning.data_cleaning import retrieve_raw_tweets
 
 
 def generate_dump(topic, tweet_count):

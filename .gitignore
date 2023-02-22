@@ -351,5 +351,3 @@ MigrationBackup/
 
 #Ignore text files
 *.txt
-
-#Ignore license
